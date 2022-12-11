@@ -1,0 +1,49 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<h1>{{listing.title}}</h1>
+{%if active == False%}
+<h1>Inactive</h1>
+{%endif%}
+<img src="{{listing.image_url}}" alt="Item image" style="max-width: 300px; max-height: 300px;">
+<p>{{listing.description}}</p>
+
+<h1>Price: ${{listing.starting_bid}} </h1>
+{% if user.is_authenticated %}
+<form action="/{{listing.title}}" method="post">
+    {% csrf_token %}
+    {% if watchlist == None %}
+    <button name="add_to_watchlist" type="submit">Add to Watchlist</button>
+    {%else%}
+    <button name="delete_from_watchlist" type="submit">Delete from Watchlist</button>
+    {%endif%}
+</form>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="number" name="new_bid" placeholder="Amount, USD" min="{{listing.starting_bid}}" step="0.01">
+    <button type="submit">Place a Bid</button>
+</form>
+{%if seller_id == user_id and highest_bid_id > 0 and active == True %}
+<form action="" method="post">
+    {% csrf_token %}
+    <button type="submit" name="close_auction">Close Auction</button>
+</form>
+{%endif%}
+{%if active == False and user_id == highest_bid_id %}
+<h1>You won auction!!!</h1>
+{%endif%}
+<form action="" method="post">
+    {% csrf_token %}
+    <textarea name="comment" placeholder="Enter a comment"></textarea>
+    <button type="submit">Submit</button>
+</form>
+
+{%endif%}
+<h1>Comments:</h1>
+{% for author, comment in comments_tuples %}
+<h3>{{author}}</h3>
+<p>{{comment}}</p>
+{% endfor %}
+
+{% endblock %}

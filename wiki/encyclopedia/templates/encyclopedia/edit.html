@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{entry}}
+{% endblock %}
+
+{% block body %}
+    <h1>Edit "{{entry}}"</h1>
+
+<form method=POST action="/wiki/{{ entry }}/edit"">
+    {% csrf_token %}
+    <label for="title">Title:</label>
+    <input type = "text" name = "title" placeholder="Type in a Title" value="{{entry}}" >
+    
+    
+    <br>
+      <textarea name="edit" placeholder="Type in your entry using Markdown syntax">{{text}}</textarea>
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
