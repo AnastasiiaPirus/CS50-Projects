@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Advanced Search</title>
+
+<body>
+    <nav>
+        <a href="index.html">Google Search</a>
+        <a href="imgsearch.html">Image Search</a>
+    </nav>
+    <div class="appbar">
+        <label id="advs">Advanced Search</label>
+    </div>
+    <hr>
+    <br>
+    <form class="advanced" action="https://www.google.com/search">
+        <span id="findpages">Find pages with...</span>
+
+        <div class="grid-container">
+            <div class="item1">
+                <label>all these words:</label>
+            </div>
+            <div class="item2">
+                <input class="advinputline" type="text" name="q">
+            </div>
+            <div class="item3">Type the important words: <span>tri-colour rat terrier</span></div>
+            <div class="item1">
+                <label>this exact word or phrase:</label>
+            </div>
+            <div class="item2">
+                <input class="advinputline" type="text" name="as_epq">
+            </div>
+            <div class="item3">Put exact words in quotes: <span>"rat terrier"</span></div>
+            <div class="item1">
+                <label>any of these words:</label>
+            </div>
+            <div class="item2">
+                <input class="advinputline" type="text" name="as_oq">
+            </div>
+            <div class="item3">Type OR between all the words you want: <span>miniature OR standard</span></div>
+            <div class="item1">
+                <label>none of these words:</label>
+            </div>
+            <div class="item2">
+                <input class="advinputline" type="text" name="as_eq">
+            </div>
+            <div class="item3">Put a minus sign just before words that you don't want: <span>-rodent, -"Jack
+                    Russell"</span></div>
+            <div></div>
+            <div id="bntbluediv">
+                <input type="submit" id="btnblue" value="Advanced Search">
+            </div>
+            <div></div>
+        </div>
+
+
+
+    </form>
+</body>
+
+</html>
